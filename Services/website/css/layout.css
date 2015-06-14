@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+.logo-webservice{
+	width:24px;
+}
+.nav-brand-logo{
+	width:24px;
+}
+.navbar-green {
+    background-image:linear-gradient(to bottom,#337ab7 0,#2e6da4 100%);
+    color:#ffffff;
+    border-radius:0;
+}
+
+.navbar-green .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-green .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:transparent;
+}
+.navbar-green .navbar-brand {
+    color:#eeeeee;
+}
+.navbar-green .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-green .nav>li>a:focus, .navbar-green .nav>li>a:hover {
+  text-decoration: none;
+  background-color: #fff;
+  color:#333;
+}
+.navbar-green .navbar-nav>.active>a, .navbar-green .navbar-nav>.active>a:focus, .navbar-green .navbar-nav>.active>a:hover {
+  color: #333;
+  background-color: #fff;
+}
+.navbar-green .navbar-nav>.active>a, .navbar-green .navbar-nav>.open>a {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdbdbdb', endColorstr='#ffe2e2e2', GradientType=0);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0 3px 9px rgba(0,0,0,.075);
+  box-shadow: inset 0 3px 9px rgba(0,0,0,.075);
+}
+.navbar-green .nav .open>a,.navbar-green .nav .open>a:focus,.navbar-green .nav .open>a:hover {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.body{
+	margin-top:60px !important;
+	background: url(./../../../Common/images/bg_stripe.png) repeat;
+}
+ul.left-panel-list{
+list-style: none;
+  padding: 0px;
+}
+.content-webservice{
+	margin-top:10px;
+	padding-top:5px;
+}
+body, .page, .body{
+	padding:0px;
+	margin:0px;
+}
+.navbar-green .nav-link-auth li>a:hover{
+	background: inherit !important;
+	color: inherit !important;
+	text-decoration: underline;
+}
+.navbar-green .nav-link-auth .open>a,.navbar-green .nav-link-auth .open>a:focus,.navbar-green .nav-link-auth .open>a:hover {
+	background: inherit !important;
+	color: inherit !important;
+	text-decoration: underline;
+}
+.navbar-green .nav-link-auth .dropdown-menu{
+	color:#000;
+}
+.glyphicon{
+	top:0px;
+}
+.input-group-btn .btn{
+	height:34px;
+}

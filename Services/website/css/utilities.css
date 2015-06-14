@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+.image-container {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  margin-bottom:20px;
+}
+.image-container img {
+  width: 100%;
+}
+.slider-controls{
+  position: relative;
+  width: 100%;
+}
+.slider-controls span.glyphicon{
+  position: absolute;
+  font-size: 3em;
+  opacity: 0.5;
+  color: #666;
+  font-weight: lighter;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor:pointer;
+  margin-top:40%;
+}
+.slider-controls span.glyphicon:hover{
+	opacity:1;
+}
+.slider-controls .glyphicon-chevron-right{
+	right:0px;
+}
