@@ -11,22 +11,24 @@ window.fbAsyncInit = function(appid,ver) {
     });
 };
 
-function checkfbLoginState() {
-	var loginstate	=	false;
+function checkfbLoginState(paramStr, callback) {
 	FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
-			loginstate	=	true;
+			fbuserinfo(paramStr,callback);
 	    } 
-	    else if (response.status === 'not_authorized') {
-	    	alert('Please log into this app');
-	    }
-	    else {
-	    	alert('Please log into this app');
-	    }
+		else{
+			FB.login(function(response){
+				if (response.status === 'connected') {
+					fbuserinfo(paramStr,callback);
+			    } 
+				else{
+					alert('Please log into app');
+				}
+			});
+		}
 	});
-	return loginstate;
 }
-function fbuserinfo(permissionSet) {
+function fbuserinfo(permissionSet,callback) {
 	if(permissionSet == '' || permissionSet == null){
 		permissionSet = '0,1';
 	}
@@ -38,7 +40,8 @@ function fbuserinfo(permissionSet) {
 		}
 		scopeStr	+=	fbPermissionArr[parseInt(permissions[per])];
 	}
-    FB.api('/me/permissions', function(response) {
+    FB.api('/me', function(response) {
     	fbLoginResponseInfo	=	response;
+    	callback();
     },{scope:scopeStr,auth:'rerequest'});
 }
