@@ -1,4 +1,5 @@
 <?php
+	require_once './../../Common/php/OperateDB/DbMgrInterface.php';
 ?>
 <div class='body container-fluid'>
 <?php 
@@ -16,7 +17,9 @@
 		switch ($action){
 			case 'school':
 				if(isset($id)){
-					include './html/school/'.$id.'.html';
+					$schoolInfoData = DB_Read(array('Table'=>'schoollist','Fields'=>'*','clause'=>'schoolId = '.$id),'ASSOC','');
+					include './php/schoolDetail.php';
+//					include './html/school/'.$id.'.html';
 				}
 				else{
 					include './html/schoolDefault.html';
