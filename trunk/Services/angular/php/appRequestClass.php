@@ -19,6 +19,16 @@
         return $processOutput;
     }
 
+    function get_state_list($requestVars){
+        $db_response    =   array();
+        $db_response    =   DB_Read(
+            array(
+                'Table' => 'statelist',
+                'Fields'=> 'stateId,stateName',
+            )
+        ,'ASSOC','');
+        return $db_response;
+    }
     function search_state_city($requestVars){
         $db_response    =   array();
         $db_response    =   DB_Read(

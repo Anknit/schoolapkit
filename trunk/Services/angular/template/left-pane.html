@@ -12,15 +12,16 @@
 					        	</div>
 					        	<select data-ng-change="getStateCity()" class="form-control" data-ng-model="schoolSearchState">
 									<option value="0" >Select State</option>
-                                    <option data-ng-repeat="state in states" value="{{state.value}}">{{state.name}}</option> 
+                                    <option data-ng-repeat="state in states" value="{{state.stateId}}">{{state.stateName}}</option> 
 					        	</select>
 					        </div>
 					        <div class="input-group">
 					        	<div class="input-group-addon">
 					        		<span class='glyphicon glyphicon-flag'></span>
 					        	</div>
-					        	<select class="form-control">
-									<option selected="selected">Select City</option>
+					        	<select class="form-control" data-ng-model="schoolSearchCity">
+									<option value="0">Select City</option>
+                                    <option data-ng-repeat="city in cities" value="{{city.cityId}}">{{city.cityName}}</option> 
 					        	</select>
 					        </div>
 					        <div class="input-group">
@@ -46,15 +47,16 @@
 					        	</div>
 					        	<select data-ng-change="getStateCity()" class="form-control" data-ng-model="schoolSearchState">
 									<option value="0">Select State</option>
-                                    <option data-ng-repeat="state in states" value="{{state.value}}">{{state.name}}</option> 
+                                    <option data-ng-repeat="state in states" value="{{state.stateId}}">{{state.stateName}}</option> 
 					        	</select>
 					        </div>
 					        <div class="input-group">
 					        	<div class="input-group-addon">
 					        		<span class='glyphicon glyphicon-flag'></span>
 					        	</div>
-					        	<select class="form-control">
-									<option selected="selected">Select City</option>
+					        	<select class="form-control" data-ng-model="schoolSearchCity">
+									<option value="0">Select City</option>
+                                    <option data-ng-repeat="city in cities" value="{{city.cityId}}">{{city.cityName}}</option> 
 					        	</select>
 					        </div>
 						</form>
@@ -72,15 +74,16 @@
 					        	</div>
 					        	<select data-ng-change="getStateCity()" class="form-control" data-ng-model="schoolSearchState">
 									<option value="0">Select State</option>
-                                    <option data-ng-repeat="state in states" value="{{state.value}}">{{state.name}}</option> 
+                                    <option data-ng-repeat="state in states" value="{{state.stateId}}">{{state.stateName}}</option> 
 					        	</select>
 					        </div>
 					        <div class="input-group">
 					        	<div class="input-group-addon">
 					        		<span class='glyphicon glyphicon-flag'></span>
 					        	</div>
-					        	<select class="form-control">
-									<option selected="selected">Select City</option>
+					        	<select class="form-control" data-ng-model="schoolSearchCity">
+									<option value="0">Select City</option>
+                                    <option data-ng-repeat="city in cities" value="{{city.cityId}}">{{city.cityName}}</option> 
 					        	</select>
 					        </div>
 					        <div class="input-group">
@@ -107,8 +110,18 @@
 					        	<div class="input-group-addon">
 					        		<span class='glyphicon glyphicon-flag'></span>
 					        	</div>
-					        	<select class="form-control">
-									<option selected="selected">Select City</option>
+					        	<select data-ng-change="getStateCity()" class="form-control" data-ng-model="schoolSearchState">
+									<option value="0">Select State</option>
+                                    <option data-ng-repeat="state in states" value="{{state.stateId}}">{{state.stateName}}</option> 
+					        	</select>
+					        </div>
+					        <div class="input-group">
+					        	<div class="input-group-addon">
+					        		<span class='glyphicon glyphicon-flag'></span>
+					        	</div>
+					        	<select class="form-control" data-ng-model="schoolSearchCity">
+									<option value="0">Select City</option>
+                                    <option data-ng-repeat="city in cities" value="{{city.cityId}}">{{city.cityName}}</option> 
 					        	</select>
 					        </div>
 					        <div class="input-group">
