@@ -1,18 +1,27 @@
 (function () {
     "use strict";
     var leftPaneController  =   function ($scope, $http) {
-        $scope.schoolSearchState    =   '0';
-        $scope.schoolSearchCity     =   '0';
-        $scope.cities   =   [];
-        $scope.states   =   JSON.parse(stateJSON);
+        $scope.states   =   JSON.parse(stateJson);
         $scope.getStateCity = function () {
-            var data  =   {'action': 'act_01', 'data': {'stateId': $scope.schoolSearchState}}, successCallback =   function (response) {
-                $scope.cities   =   response.data.data;
+            $scope.cities   =   [];
+            $scope.locations   =   [];
+            if ($scope.schoolSearchState !== '') {
+                var data  =   {'action': 'act_01', 'data': {'stateId': $scope.schoolSearchState}}, successCallback =   function (response) {
+                    $scope.cities   =   response.data.data;
+                }, config = {}, errorCallback =   function (response) {
+                    console.log(response);
+                };
+                $http.get('./php/requestHandler.php', {params: {'data': JSON.stringify(data)}}).then(successCallback, errorCallback);
+            }
+        };
+        $scope.getCityLocation = function () {
+            var data  =   {'action': 'act_02', 'data': {'cityId': $scope.schoolSearchCity}}, successCallback =   function (response) {
+                $scope.locations   =   response.data.data;
             }, config = {}, errorCallback =   function (response) {
                 console.log(response);
-                $scope.cities   =   [];
+                $scope.locations   =   [];
             };
-            $http.post('./php/requestHandler.php', data).then(successCallback, errorCallback);
+            $http.get('./php/requestHandler.php', {params: {'data': JSON.stringify(data)}}).then(successCallback, errorCallback);
         };
     };
     leftPaneController.$inject  =   ['$scope', '$http'];
