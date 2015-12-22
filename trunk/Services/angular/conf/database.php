@@ -4,8 +4,8 @@ function get_DbConfig(){
 				'host'      =>	'localhost',
 				'port'      =>	'3306',
 				'username'	=>	'root',
-				'password'	=>	'root123',
-				'database'	=>	'WorkDB'
+				'password'	=>	'',
+				'database'	=>	'workdb'
 		);
 	return $config;
 }

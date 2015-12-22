@@ -23,11 +23,11 @@
         $db_response    =   array();
         $db_response    =   DB_Read(
             array(
-                'Table' => 'cityList',
+                'Table' => 'citylist',
                 'Fields'=> 'cityId,cityName',
                 'clause'=> 'stateId = '.$requestVars['stateId']
-            ),'ASSOC',''
-        );
+            )
+        ,'ASSOC','');
         return $db_response;
     }
 ?>
