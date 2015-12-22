@@ -2,19 +2,12 @@
     "use strict";
     var leftPaneController  =   function ($scope, $http) {
         $scope.schoolSearchState    =   '0';
-        $scope.states   =   [{
-            'name': 'Andaman and Nicobar',
-            'value': '1'
-        }, {
-            'name': 'Andhra Pradesh',
-            'value': '2'
-        }, {
-            'name': 'Arunachal Pradesh',
-            'value': '3'
-        }];
+        $scope.schoolSearchCity     =   '0';
+        $scope.cities   =   [];
+        $scope.states   =   JSON.parse(stateJSON);
         $scope.getStateCity = function () {
             var data  =   {'action': 'act_01', 'data': {'stateId': $scope.schoolSearchState}}, successCallback =   function (response) {
-                $scope.cities   =   response;
+                $scope.cities   =   response.data.data;
             }, config = {}, errorCallback =   function (response) {
                 console.log(response);
                 $scope.cities   =   [];
