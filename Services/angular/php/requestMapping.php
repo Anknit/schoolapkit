@@ -5,8 +5,11 @@
             case STATE_CITY_SEARCH:
                 $mapRequestOutput   =   processDataRequest('search_state_city',$_REQUEST['data']);
                 break;
-            case STATE_CITY_SEARCH:
+            case CITY_LOCATION_SEARCH:
                 $mapRequestOutput   =   processDataRequest('search_city_location',$_REQUEST['data']);
+                break;
+            case STATE_SCHOOL_SEARCH:
+                $mapRequestOutput   =   processDataRequest('search_state_school',$_REQUEST['data']);
                 break;
             default:
                 break;

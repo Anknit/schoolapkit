@@ -28,7 +28,7 @@
 					        	<div class="input-group-addon">
 					        		<span class='glyphicon glyphicon-screenshot'></span>
 					        	</div>
-					        	<select class="form-control">
+					        	<select class="form-control" data-ng-change="getStateSchool()" data-ng-model="schoolSearchLocation">
 									<option value="" data-ng-selected>Select Location</option>
                                     <option data-ng-repeat="location in locations" value="{{location.locationId}}">{{location.locationName}}</option> 
 					        	</select>

@@ -7,7 +7,11 @@
                 controller: 'homeController',
                 templateUrl: 'template/home.html'
             })
-            .when('/schools/:basic', {
+            .when('/search/schools/:schoolName', {
+                controller: 'schoolSearchController',
+                templateUrl: 'template/schoolList.html'
+            })
+            .when('/schools/', {
                 controller: 'schoolController',
                 templateUrl: 'template/school.html'
             })

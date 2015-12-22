@@ -23,10 +23,10 @@
         $db_response    =   array();
         $db_response    =   DB_Read(
             array(
-                'Table' => 'statelist',
+                'Table' => 'stateList',
                 'Fields'=> 'stateId,stateName',
             )
-        ,'ASSOC','');
+        ,'ASSOC','','stateId');
         return $db_response;
     }
 
@@ -37,7 +37,7 @@
                 'Table' => 'cityList',
                 'Fields'=> 'cityId,cityName',
                 'clause'=> 'stateId = '.$requestVars['stateId']
-            ),'ASSOC',''
+            ),'ASSOC','','cityId'
         );
         return $db_response;
     }
@@ -46,10 +46,23 @@
         $db_response    =   array();
         $db_response    =   DB_Read(
             array(
-                'Table' => 'locationList',
+                'Table' => 'locationlist',
                 'Fields'=> 'locationId,locationName',
                 'clause'=> 'cityId = '.$requestVars['cityId']
-            ),'ASSOC',''
+            ),'ASSOC','','locationId'
+        );
+        return $db_response;
+    }
+
+    function search_state_school($requestVars){
+        $db_response    =   array();
+        $db_response    =   DB_Read(
+            array(
+                'Table' => 'schoollist',
+                'Fields'=> 'schoolId,schoolName,address,affiliationNum',
+                'clause'=> 'stateName = "'.$requestVars['stateName'].'"',
+                'order'=>'schoolId DESC LIMIT 0,10'
+            ),'ASSOC','','schoolId'
         );
         return $db_response;
     }

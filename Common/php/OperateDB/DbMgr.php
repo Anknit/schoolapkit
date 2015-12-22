@@ -267,6 +267,7 @@ class DBMgr{
 				}				
 			break;
 	}
+//    var_dump($Query);
 	return $Query;
 }
 	
