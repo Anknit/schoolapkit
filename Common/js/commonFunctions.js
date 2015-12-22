@@ -1206,7 +1206,7 @@ optional	object.callBack			=	Any function to be called back wid response from se
 */
 function send_remoteCall(object)
 {
-	var callType = false, sendMethod	=	'POST', additionalData	=	null, callBack	=	'';
+	var callType = true, sendMethod	=	'POST', additionalData	=	null, callBack	=	'';
 	if(IsValueNull(object.actionScriptURL))
 		return false;
 		
@@ -1214,7 +1214,7 @@ function send_remoteCall(object)
 		sendMethod	=	'POST';
 
 	if(!IsValueNull(object.callType) && object.callType	==	'SYNC')	
-		callType	=	true;
+		callType	=	false;
 		
 	additionalData	=	object.additionalData;
 	
@@ -1228,6 +1228,11 @@ function send_remoteCall(object)
 		}; 
 	}
 	xmlHttp.open(sendMethod,object.actionScriptURL,callType);
+	if(additionalData != null && additionalData != undefined ){
+		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlHttp.setRequestHeader("Content-length", additionalData.length);
+		xmlHttp.setRequestHeader("Connection", "close");
+	}
 	xmlHttp.send(additionalData); 
 }
 
@@ -1472,6 +1477,7 @@ var venera_update_data	=	function(DataObjectToBind){
 		$.fn.dataChange = null;
 	}
 };
+
 function showCenter(obj)
 {	
 	if(typeof obj != "object")	
@@ -1485,4 +1491,23 @@ function showCenter(obj)
 	divObject.style.left = window.screen.width/2 - 100 + 'px';	
 	divObject.style.display = "block";	
 }
+
+function IsbrowserIE(){
+	output	=	false;
+	var ua = window.navigator.userAgent;
+	var msie = ua.indexOf("MSIE ");
+	var Trident = ua.indexOf("Trident");
+	if (msie > 0 || Trident > 0){
+		output = true;
+	}
+	return output;
+}
+
+$(function(){
+    if(window.Alert == undefined || window.alert == null){
+        Alert = function(msg){
+            alert(msg);
+        };
+    }
+});
 

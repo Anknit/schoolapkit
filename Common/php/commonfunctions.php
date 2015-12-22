@@ -25,10 +25,10 @@ function randomNumber_String($length)
 }
 
 //This method checks if the object for  a class exists. If it doesn't then the object with class name is created with global scope. The class name is taken as an argument
-function getclassObject($className){
+function getclassObject($className, $constructorParams	=	''){
 	global $$className;
 	if(!isset($$className)){
-		$$className	=	 new $className();
+		$$className	=	 new $className($constructorParams);
 	}
 	return $$className;
 }
@@ -123,10 +123,117 @@ function getObjectFromSession($sessionKey){
 function getRaciParameters(){
 	$paramStr 	= trim($GLOBALS['HTTP_RAW_POST_DATA']);
 	if($paramStr	!= '' && $paramStr != NULL)
-		$output	=	parse_str($paramStr);
+		parse_str($paramStr, $output);
 	else
 		$output	=	'No data recieved';	
 	
 	return $output;		
+}
+
+//Input can be an array or a comma separated string only
+function createCommaSeparatedListForMysqlIN($inputValues){
+	$resultingString	=	'';
+	if(!empty($inputValues)) {
+		if(!is_array($inputValues))
+			$arrayValues	=	explode(',', $inputValues);
+		else
+			$arrayValues	=	$inputValues;
+	
+		$resultingString	=	'"'.implode('", "', $arrayValues).'"';
+	}
+	return $resultingString;
+}
+
+function sendExternalRequest($data = '', $url = ''){
+	if(empty($url)) return false;	//NO API URL has been provided
+	
+	$context  = stream_context_create($data);
+	$result = file_get_contents($url, false, $context);
+	//var_dump(headers_list()); 
+	return $result;
+}
+
+
+/*
+ * checks the validity of email
+ * valid characters in username: a-zA-Z0-9_+/
+ * domain name can be: gmail.com,gmail.co.uk etc 
+ * @return true or false
+ */
+function check_email($email) {
+	$email	=	filter_var($email, FILTER_SANITIZE_EMAIL);
+	$output	=	false;
+	if (filter_var($email, FILTER_VALIDATE_EMAIL))	{
+		$output	=	true;
+	}
+	
+	return $output;	
+}
+
+function check_password($pass)
+{
+	if(preg_match("/....../",$pass))
+	{
+		return true;
+	}
+	else
+	{
+		return false;	
+	}
+}
+/*
+ * checks the validity of links sent by or received by corona (ciphers)
+ * encrypted link should contain only base 64 encoding characters:a-zA-Z0-9_+=-/
+ * although _ is not a base 64 character  
+ */
+function check_cipher($link)
+{
+	if(preg_match("/^([\w+\/=-]*$)/",$link))
+	{
+		return true; 
+	}
+	else
+	{
+		return false;	
+	}
+	
+}
+
+/*
+ * checks the validity of youtube videoids
+ * videoids must contain only: a-zA-Z0-9_-
+ * and length is 11
+ * there is no official documentation and may be change in future
+ */
+function check_y_videoid($videoid)
+{
+	if(preg_match("/^([\w-]*$)/",videoid))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}
+	
+function config_compliance($config){
+	if(!is_array($config) && is_callable($config)){ //if sso_config is a function then get config from the function
+		$config	=	call_user_func($config);
+	}
+	return $config;
+}
+
+function getRemoteIPAddress(){
+	$ip	=	'';
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	} else {
+		$ip = $_SERVER['REMOTE_ADDR'];
+	}
+	return $ip;
 }
 ?>

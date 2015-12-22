@@ -1,10 +1,9 @@
 <?php
 /*
- * Author: Aditya
+* Author: Aditya
 * date: 08-Aug-2014
 * Description: Name is self explanatory
 */
-
 function ErrorLogging($message) {
 	if(isset($_SESSION['SETUP_ROOT'])){
 		$filename	=	$_SESSION['SETUP_ROOT'].'/temp/Errors.txt';
