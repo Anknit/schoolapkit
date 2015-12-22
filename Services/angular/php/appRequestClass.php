@@ -29,15 +29,28 @@
         ,'ASSOC','');
         return $db_response;
     }
+
     function search_state_city($requestVars){
         $db_response    =   array();
         $db_response    =   DB_Read(
             array(
-                'Table' => 'citylist',
+                'Table' => 'cityList',
                 'Fields'=> 'cityId,cityName',
                 'clause'=> 'stateId = '.$requestVars['stateId']
-            )
-        ,'ASSOC','');
+            ),'ASSOC',''
+        );
+        return $db_response;
+    }
+
+    function search_city_location($requestVars){
+        $db_response    =   array();
+        $db_response    =   DB_Read(
+            array(
+                'Table' => 'locationList',
+                'Fields'=> 'locationId,locationName',
+                'clause'=> 'cityId = '.$requestVars['cityId']
+            ),'ASSOC',''
+        );
         return $db_response;
     }
 ?>
