@@ -17,11 +17,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="./">Web-Service</a>
+                        <a class="navbar-brand" href="#/">Web-Service</a>
                     </div>
                     <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
-                            <li class="active"><a href="./">Home</a></li>
+                            <li class="active"><a href="#/">Home</a></li>
                             <li><a href="#/schools">Schools</a></li>
                             <li class="dropdown">
                                 <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Results <span class="caret"></span></a>

@@ -11,6 +11,9 @@
             case STATE_SCHOOL_SEARCH:
                 $mapRequestOutput   =   processDataRequest('search_state_school',$_REQUEST['data']);
                 break;
+            case SCHOOL_INFO_SEARCH:
+                $mapRequestOutput   =   processDataRequest('search_school_info',$_REQUEST['data']);
+                break;
             default:
                 break;
         }
