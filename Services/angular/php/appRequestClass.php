@@ -59,11 +59,23 @@
         $db_response    =   DB_Read(
             array(
                 'Table' => 'schoollist',
-                'Fields'=> 'schoolId,schoolName,address,affiliationNum',
+                'Fields'=> 'schoolId,schoolName,address,affiliationNum,stateName',
                 'clause'=> 'stateName = "'.$requestVars['stateName'].'"',
                 'order'=>'schoolId DESC LIMIT 0,10'
             ),'ASSOC','','schoolId'
         );
         return $db_response;
+    }
+
+    function search_school_info($requestVars){
+        $db_response    =   array();
+        $db_response    =   DB_Read(
+            array(
+                'Table' => 'schoollist',
+                'Fields'=> '*',
+                'clause'=> 'stateName = "'.$requestVars['stateName'].'" AND schoolId = '.$requestVars['schoolId']
+            ),'ASSOC',''
+        );
+        return $db_response[0];
     }
 ?>
