@@ -59,7 +59,7 @@
         $db_response    =   DB_Read(
             array(
                 'Table' => 'schoollist',
-                'Fields'=> 'schoolId,schoolName,address,affiliationNum,stateName',
+                'Fields'=> 'schoolId,schoolName,address,affiliationNum,stateName,pinCode,phoneOffice,email,website',
                 'clause'=> 'stateName = "'.$requestVars['stateName'].'"',
                 'order'=>'schoolId DESC LIMIT 0,10'
             ),'ASSOC','','schoolId'

@@ -5,6 +5,7 @@
 		<meta content="html" lang="en" name="Webservice">
         <title>Schoolap.com</title>
         <link type="text/css" rel="stylesheet" href="./../../Common/css/bootstrap/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="./css/style.css" />
     </head>
     <body data-ng-app="schoolap">
         <header>
@@ -59,6 +60,9 @@
 -->
                         </ul>
                         <ul class="nav navbar-nav navbar-right nav-link-auth">
+                            <li>
+                                <input type="search" class="" placeholder=&#9906; />
+                            </li>
                             <li class='dropdown'>
                                 <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><small>Login / Register</small></a>
                                 <ul class="dropdown-menu" role="menu" style='min-width:300px;'>
