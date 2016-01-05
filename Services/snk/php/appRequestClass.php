@@ -48,4 +48,11 @@
         return $db_response;
     }
 
+    function submit_next_day_option(){
+        $db_response    =   array();
+        $fieldToIncrement   =   (int)$requestVars['optionId'];
+        $db_response    =   DB_Query('Update presentOption set presentoptionvotecount = presentoptionvotecount+1 where presentoptionid = '.$fieldToIncrement);
+        return $db_response;
+    }
+
 ?>

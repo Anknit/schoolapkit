@@ -11,6 +11,9 @@
             case NEXT_DAY_OPTIONS:
                 $mapRequestOutput   =   processDataRequest('get_next_day_options',$_REQUEST['data']);
                 break;
+            case SUBMIT_NEXT_DAY_OPTION:
+                $mapRequestOutput   =   processDataRequest('submit_next_day_option',$_REQUEST['data']);
+                break;
             default:
                 break;
         }
