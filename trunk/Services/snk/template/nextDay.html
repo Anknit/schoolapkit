@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <ul class="list-group">
+            <li class="list-group-item" data-ng-repeat="option in nextDayOptionList">
+                <div class="text-success">
+                    {{option.optionName}}
+                </div>
+                <button class="btn btn-default" type="button" ng-click="confirmSelection($event)" data-optionval="{{option.optionid}}"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;I want this</button>
+            </li>
+        </ul>
+    </div>
+</div>
