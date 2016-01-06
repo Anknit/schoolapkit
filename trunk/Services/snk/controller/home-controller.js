@@ -10,7 +10,9 @@
         $scope.confirmSelection =   function (event) {
             var data  =   {'action': 'optionSelect', 'data': {'optionId': $(event.currentTarget).attr('data-optionval')}}, successCallback =   function (response) {
                 $scope.responseData   =   response.data.data;
-                alert($scope.responseData);
+                if($scope.responseData){
+                    location.reload();
+                }
             }, config = {}, errorCallback =   function (response) {
                 console.log(response);
                 $scope.schoolInfo   =   [];
