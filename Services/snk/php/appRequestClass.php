@@ -21,17 +21,17 @@
 
     function submit_option_selection($requestVars){
         $db_response    =   array();
-        $fieldToIncrement   =   '';
-        switch($requestVars['optionId']){
-            case '1':
-                $fieldToIncrement   =   1;
-                break;
-            case '2':
-                $fieldToIncrement   =   2;
-                break;
-            default:
-                break;
+        $alreadySubmitOption    =   false;
+        $fieldToIncrement   =   (int)$requestVars['optionId'];
+        
+        $previousResponse   =   DB_Read(array('Table'=>'userinfo','Fields'=>'presentvotestatus,presentvoteoption','clause'=>'userid = '.$_SESSION['userid']),'ASSOC','');
+        if($previousResponse[0]['presentvotestatus'] == 1){
+            $alreadySubmitOption    =   $previousResponse[0]['presentvoteoption'];
         }
+        if($alreadySubmitOption){
+            DB_Query('Update presentOption set presentoptionvotecount = presentoptionvotecount-1 where presentoptionid = '.$alreadySubmitOption);
+        }
+        $db_response    =   DB_Query('Update userinfo set presentvotestatus = 1,presentvoteoption = '.$fieldToIncrement.' where userid = '.$_SESSION['userid']);
         $db_response    =   DB_Query('Update presentOption set presentoptionvotecount = presentoptionvotecount+1 where presentoptionid = '.$fieldToIncrement);
         return $db_response;
     }
@@ -51,7 +51,7 @@
     function submit_next_day_option(){
         $db_response    =   array();
         $fieldToIncrement   =   (int)$requestVars['optionId'];
-        $db_response    =   DB_Query('Update presentOption set presentoptionvotecount = presentoptionvotecount+1 where presentoptionid = '.$fieldToIncrement);
+//        $db_response    =   DB_Query('Update presentOption set presentoptionvotecount = presentoptionvotecount+1 where presentoptionid = '.$fieldToIncrement);
         return $db_response;
     }
 

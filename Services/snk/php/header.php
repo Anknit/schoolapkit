@@ -25,6 +25,14 @@
                             <li class="active"><a href="#/">Today's Option</a></li>
                             <li><a href="#/next-day">Next Day Suggestion</a></li>
                         </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a>Welcome&nbsp;<?php echo $_SESSION['email'];?></a>
+                            </li>
+                            <li>
+                                <a href="./logout.php" >Logout</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

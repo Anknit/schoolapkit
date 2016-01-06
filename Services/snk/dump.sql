@@ -66,7 +66,7 @@ CREATE TABLE `presentOption` (
 
 LOCK TABLES `presentOption` WRITE;
 /*!40000 ALTER TABLE `presentOption` DISABLE KEYS */;
-INSERT INTO `presentOption` VALUES (1,1,2,1),(2,2,1,2);
+INSERT INTO `presentOption` VALUES (1,1,3,1),(2,2,1,2);
 /*!40000 ALTER TABLE `presentOption` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,9 +79,18 @@ DROP TABLE IF EXISTS `userinfo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userinfo` (
   `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `loginid` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `usertype` int(2) DEFAULT NULL,
+  `userstatus` int(2) DEFAULT NULL,
+  `presentvotestatus` int(2) DEFAULT '0',
+  `presentvoteoption` int(2) DEFAULT '0',
+  `nextvotestatus` int(2) DEFAULT '0',
+  `nextvoteoption` int(2) DEFAULT '0',
   PRIMARY KEY (`userid`),
   UNIQUE KEY `userid_UNIQUE` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,6 +99,7 @@ CREATE TABLE `userinfo` (
 
 LOCK TABLES `userinfo` WRITE;
 /*!40000 ALTER TABLE `userinfo` DISABLE KEYS */;
+INSERT INTO `userinfo` VALUES (1,'ankit.agrawal@veneratech.com','anknit','0192023a7bbd73250516f069df18b500',NULL,NULL,1,1,NULL,NULL);
 /*!40000 ALTER TABLE `userinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -102,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-06  0:43:01
+-- Dump completed on 2016-01-07  0:22:54
