@@ -14,6 +14,9 @@
             case SUBMIT_NEXT_DAY_OPTION:
                 $mapRequestOutput   =   processDataRequest('submit_next_day_option',$_REQUEST['data']);
                 break;
+            case CHANGE_PASSWORD:
+                $mapRequestOutput   =   processDataRequest('change_pswd',$_REQUEST['data']);
+                break;
             default:
                 break;
         }

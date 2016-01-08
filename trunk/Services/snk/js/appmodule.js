@@ -11,17 +11,11 @@
                 controller: 'nextDayController',
                 templateUrl: 'template/nextDay.html'
             })
-/*
-            .when('/schools/:stateName/:schoolId', {
-                controller: 'schoolController',
-                templateUrl: 'template/school.html'
+            .when('/change-pswd', {
+                controller: 'pswdChangeController',
+                templateUrl: 'template/pswdChange.html'
             })
-*/
 /*
-            .when('/result/class/10', {
-                controller: '',
-                templateUrl: ''
-            })
             .when('/result/class/12', {
                 controller: '',
                 templateUrl: ''
