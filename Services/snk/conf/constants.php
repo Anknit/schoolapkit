@@ -3,4 +3,7 @@
     define('PRESENT_OPTION_STATUS','presentoptionstatus');
     define('NEXT_DAY_OPTIONS','nextdayoptions');
     define('SUBMIT_NEXT_DAY_OPTION','nextDayOptionSelect');
+    define('CHANGE_PASSWORD','changePassword');
+    define('ORDER_BUILD_FOR_TODAY',1);
+    define('ORDER_AWAITING',2);
 ?>
