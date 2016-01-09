@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once __DIR__.'/php/dependencyScripts.php';
     if(isset($_SESSION['login']) && $_SESSION['login']){
         require_once __DIR__.'/php/header.php';

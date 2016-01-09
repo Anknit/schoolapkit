@@ -5,7 +5,7 @@
                 <p class="text-danger">Note: Order for the day will be finalised at 11.30 a.m. Don't miss the chance to order sancks of your choice</p>
             </div>
             <div class='col-md-12 text-center'>
-                <p class='center-block text-primary text-center'>&#169; 2015 Designed by Ankit Agarwal</p>
+                <p class='center-block text-primary text-center'>&#169; <?php echo COPYRIGHT ;?></p>
             </div>
         </div>
         <footer>

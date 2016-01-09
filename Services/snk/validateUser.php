@@ -6,15 +6,16 @@ require_once __DIR__.'/php/dependencyScripts.php';
         $userExist  =   DB_Read(
             array(
                 'Table'=>'userinfo',
-                'Fields'=>'userid,email,password',
+                'Fields'=>'userid,email,password,usertype',
                 'clause'=>'loginid = "'.$_POST['login'].'"'
             ),'ASSOC','');
         if(count($userExist) == 1){
             if($userExist[0]['password'] == md5($_POST['password'])){
                 $output = true;
                 $_SESSION['login']  =   true;
-                $_SESSION['userid'] =   $userExist[0]['userid'];
-                $_SESSION['email'] =   $userExist[0]['email'];
+                $_SESSION['userid']     =   $userExist[0]['userid'];
+                $_SESSION['email']      =   $userExist[0]['email'];
+                $_SESSION['usertype']   =   $userExist[0]['usertype'];
             }
             else{
                 $output = false;
