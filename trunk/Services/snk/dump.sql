@@ -28,6 +28,7 @@ CREATE TABLE `optionlisttable` (
   `optionid` int(11) NOT NULL AUTO_INCREMENT,
   `optionName` varchar(200) DEFAULT NULL,
   `optionVoteCount` varchar(45) DEFAULT NULL,
+  `lastorderedon` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`optionid`),
   UNIQUE KEY `optionid_UNIQUE` (`optionid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -39,8 +40,36 @@ CREATE TABLE `optionlisttable` (
 
 LOCK TABLES `optionlisttable` WRITE;
 /*!40000 ALTER TABLE `optionlisttable` DISABLE KEYS */;
-INSERT INTO `optionlisttable` VALUES (1,'Poha','0'),(2,'Fruit Salad','0'),(3,'Patties','0'),(4,'Sandwich','0'),(5,'Bhelpuri','0');
+INSERT INTO `optionlisttable` VALUES (1,'Poha','0','1452356000'),(2,'Fruit Salad','0','1452356040'),(3,'Patties','0','1452355774'),(4,'Sandwich','0','1452356092'),(5,'Bhelpuri','1','1452356127');
 /*!40000 ALTER TABLE `optionlisttable` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderstatus`
+--
+
+DROP TABLE IF EXISTS `orderstatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orderstatus` (
+  `orderid` int(10) NOT NULL AUTO_INCREMENT,
+  `orderoptionid` int(10) DEFAULT NULL,
+  `ordervotecount` int(10) DEFAULT NULL,
+  `status` int(2) DEFAULT NULL,
+  `orderDate` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`orderid`),
+  UNIQUE KEY `orderid_UNIQUE` (`orderid`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderstatus`
+--
+
+LOCK TABLES `orderstatus` WRITE;
+/*!40000 ALTER TABLE `orderstatus` DISABLE KEYS */;
+INSERT INTO `orderstatus` VALUES (1,2,4,1,'2015-01-09'),(2,1,2,1,''),(3,2,2,1,'2016-01-09 21:34:48'),(4,5,3,1,'2016-01-09 21:37:06'),(5,3,2,1,'2016-01-09 21:38:19'),(6,1,3,1,'2016-01-09 21:43:14'),(7,2,0,1,'2016-01-09 21:43:53'),(8,4,0,1,'2016-01-09 21:44:25'),(9,4,0,1,'2016-01-09 21:44:46'),(10,5,0,1,'2016-01-09 21:45:07'),(11,5,0,1,'2016-01-09 21:45:17'),(12,0,0,2,'2016-01-09 21:46:55');
+/*!40000 ALTER TABLE `orderstatus` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -66,7 +95,7 @@ CREATE TABLE `presentOption` (
 
 LOCK TABLES `presentOption` WRITE;
 /*!40000 ALTER TABLE `presentOption` DISABLE KEYS */;
-INSERT INTO `presentOption` VALUES (1,1,3,1),(2,2,1,2);
+INSERT INTO `presentOption` VALUES (1,1,0,3),(2,2,1,1);
 /*!40000 ALTER TABLE `presentOption` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +119,7 @@ CREATE TABLE `userinfo` (
   `nextvoteoption` int(2) DEFAULT '0',
   PRIMARY KEY (`userid`),
   UNIQUE KEY `userid_UNIQUE` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +128,7 @@ CREATE TABLE `userinfo` (
 
 LOCK TABLES `userinfo` WRITE;
 /*!40000 ALTER TABLE `userinfo` DISABLE KEYS */;
-INSERT INTO `userinfo` VALUES (1,'ankit.agrawal@veneratech.com','anknit','0192023a7bbd73250516f069df18b500',NULL,NULL,1,1,NULL,NULL);
+INSERT INTO `userinfo` VALUES (1,'ankit.agrawal@veneratech.com','anknit','0192023a7bbd73250516f069df18b500',2,NULL,1,2,1,5),(2,'ankitakkii24@gmail.com','anknit1','0192023a7bbd73250516f069df18b500',1,NULL,0,0,0,0),(3,'test_user1@veneratech.com','anknit2','0192023a7bbd73250516f069df18b500',1,0,0,0,0,0);
 /*!40000 ALTER TABLE `userinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -112,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-07  0:22:54
+-- Dump completed on 2016-01-09 21:48:57

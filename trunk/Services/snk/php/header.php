@@ -1,8 +1,9 @@
-<?php ?>
+<?php
+?>
 <html>
     <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta content="html" lang="en" name="Webservice">
+		<meta content="html" lang="en" name="Venera Snacks">
         <title>Venera Snacks</title>
         <link type="text/css" rel="stylesheet" href="./../../Common/css/bootstrap/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="./css/style.css" />
@@ -30,6 +31,13 @@
                                 <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['email'];?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="#/change-pswd">Change Password</a></li>
+                                    <?php 
+                                        if($_SESSION['usertype'] == USER_ADMIN){
+                                    ?>
+                                    <li><a href='./manageOrders.php'>Manage Orders as Admin</a></li>
+                                    <?php 
+                                        }
+                                    ?>
                                     <li><a href="./logout.php" >Logout</a></li>
                                 </ul>
                             </li>

@@ -17,6 +17,15 @@
             case CHANGE_PASSWORD:
                 $mapRequestOutput   =   processDataRequest('change_pswd',$_REQUEST['data']);
                 break;
+            case ORDER_STATUS:
+                $mapRequestOutput   =   processDataRequest('get_order_status',$_REQUEST['data']);
+                break;
+            case RESET_ORDER_STATUS:
+                $mapRequestOutput   =   processDataRequest('reset_order_status',$_REQUEST['data']);
+                break;
+            case BUILD_SNACKS_ORDER:
+                $mapRequestOutput   =   processDataRequest('build_snacks_order',$_REQUEST['data']);
+                break;
             default:
                 break;
         }
