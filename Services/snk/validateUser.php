@@ -32,11 +32,11 @@ require_once __DIR__.'/php/dependencyScripts.php';
         $error_code =   3;
     }
     if($output){
-        header('Location : ./index.php');
+        header('Location:./');
         exit();
     }
     else{
-        header('Location : ./login.php?do='.$error_code);
+        header('Location:./login.php?do='.$error_code);
         exit();
     }
 ?>
