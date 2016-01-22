@@ -12,8 +12,9 @@
         <link type="text/css" rel="stylesheet" href="./../../Common/css/bootstrap/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="./css/style.css" />
     </head>
-    <body>
-        <div class="col-md-4 col-md-offset-4 box-shadow" style="margin-top:200px;">
+    <body class="login-body">
+        <div class="transparent-background text-center text-primary" style="font-size:48px;"><strong>Venera Snacks</strong></div>
+        <div class="col-md-4 col-md-offset-4 box-shadow transparent-background" style="margin-top:50px;">
             <form class="form" method="post" action="validateUser.php">
                 <div class="form-group">
                     <label for="loginid" class="control-label">Login-id</label>

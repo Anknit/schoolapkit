@@ -6,7 +6,7 @@
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta content="html" lang="en" name="Venera Snacks">
-            <title>Venera Snacks</title>
+            <title>Venera Snacks Orders</title>
             <link type="text/css" rel="stylesheet" href="./../../Common/css/bootstrap/bootstrap.min.css" />
             <link type="text/css" rel="stylesheet" href="./css/style.css" />
         </head>

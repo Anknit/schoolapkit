@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta content="html" lang="en" name="Venera Snacks">
         <title>Venera Snacks</title>
-        <link type="text/css" rel="stylesheet" href="./../../Common/css/bootstrap/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="./css/style.css" />
     </head>
     <body data-ng-app="snacksapp">
@@ -35,6 +35,7 @@
                                         if($_SESSION['usertype'] == USER_ADMIN){
                                     ?>
                                     <li><a href='./manageOrders.php'>Manage Orders as Admin</a></li>
+                                    <li><a href='./manageFeedbacks.php'>Manage Feedbacks</a></li>
                                     <?php 
                                         }
                                     ?>
