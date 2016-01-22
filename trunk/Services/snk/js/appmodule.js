@@ -113,3 +113,9 @@
         }];
     });
 }());
+var loadOverlay =   function(){
+    $('#overlayBlock').removeClass('hide');
+};
+var UnloadOverlay =   function(){
+    $('#overlayBlock').addClass('hide');
+};

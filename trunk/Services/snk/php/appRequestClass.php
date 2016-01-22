@@ -27,17 +27,17 @@
             $alreadySubmitOption    =   $previousResponse[0]['presentvoteoption'];
         }
         if($alreadySubmitOption){
-            DB_Query('Update presentOption set presentoptionvotecount = presentoptionvotecount-1 where presentoptionid = '.$alreadySubmitOption);
+            DB_Query('Update presentoption set presentoptionvotecount = presentoptionvotecount-1 where presentoptionid = '.$alreadySubmitOption);
         }
         $db_response    =   DB_Query('Update userinfo set presentvotestatus = 1,presentvoteoption = '.$fieldToIncrement.' where userid = '.$_SESSION['userid']);
-        $db_response    =   DB_Query('Update presentOption set presentoptionvotecount = presentoptionvotecount+1 where presentoptionid = '.$fieldToIncrement);
-        $db_response    =   DB_Query('Select ui.presentvotestatus,ui.presentvoteoption,po.*,olt.* from userinfo as ui,presentOption as po left join optionlisttable as olt on po.optionlisttableid = olt.optionid where ui.userid = '.$_SESSION['userid'],'ASSOC','','presentoptionid');
+        $db_response    =   DB_Query('Update presentoption set presentoptionvotecount = presentoptionvotecount+1 where presentoptionid = '.$fieldToIncrement);
+        $db_response    =   DB_Query('Select ui.presentvotestatus,ui.presentvoteoption,po.*,olt.* from userinfo as ui,presentoption as po left join optionlisttable as olt on po.optionlisttableid = olt.optionid where ui.userid = '.$_SESSION['userid'],'ASSOC','','presentoptionid');
         return $db_response;
     }
     function get_present_options($requestVars){
         $db_response    =   array();
         $orderStatus    =   DB_Query('Select * from orderstatus left join optionlisttable on orderstatus.orderoptionid = optionlisttable.optionid order by orderstatus.orderid desc limit 0,1','ASSOC','');
-        $db_response    =   DB_Query('Select ui.presentvotestatus,ui.presentvoteoption,po.*,olt.* from userinfo as ui,presentOption as po left join optionlisttable as olt on po.optionlisttableid = olt.optionid where ui.userid = '.$_SESSION['userid'],'ASSOC','','presentoptionid');
+        $db_response    =   DB_Query('Select ui.presentvotestatus,ui.presentvoteoption,po.*,olt.* from userinfo as ui,presentoption as po left join optionlisttable as olt on po.optionlisttableid = olt.optionid where ui.userid = '.$_SESSION['userid'],'ASSOC','','presentoptionid');
         return array('orderstatus'=>$orderStatus[0],'optiondata'=>$db_response);
     }
     function get_next_day_options($requestVars){
@@ -81,10 +81,40 @@
         }
         return $db_response;
     }
+    function submit_user_feedback($requestVars){
+        $db_response    =   array();
+        if(isset($_SESSION['userid'])){
+            $feedback_insert    =   DB_Insert(
+                array(
+                    'Table'=>'feedbacks',
+                    'Fields'=>array(
+                        'feedbacktext'=>$requestVars['feedbacktext'],
+                        'feedbackuser'=>$_SESSION['email'],
+                        'createdon'=>date("Y-m-d H:i:s"),
+                        'feedbackstatus'=>NEW_FEEDBACK
+                    )
+                ));
+            if($feedback_insert){
+                $db_response['message'] =   'Feedback submittted successfully'; 
+            }
+            else{
+                $db_response['message'] =   'Error in storing feedback'; 
+            }
+        }
+        else{
+            $db_response['message'] =   'You are not authorised for this operation'; 
+        }
+        return $db_response;
+    }
+    function get_feedback_data($requestVars){
+        $db_response    =   array();
+        $db_response    =   DB_Query('Select * from feedbacks order by createdon');
+        return $db_response;
+    }
     function get_order_status($requestVars){
         $db_response    =   array();
         $orderStatus    =   DB_Query('Select * from orderstatus left join optionlisttable on orderstatus.orderoptionid = optionlisttable.optionid order by orderstatus.orderid desc limit 0,1','ASSOC','');
-        $presentOptionStatus    =   DB_Query('Select po.*,olt.* from presentOption as po left join optionlisttable as olt on po.optionlisttableid = olt.optionid','ASSOC','','presentoptionid');
+        $presentOptionStatus    =   DB_Query('Select po.*,olt.* from presentoption as po left join optionlisttable as olt on po.optionlisttableid = olt.optionid','ASSOC','','presentoptionid');
         $nextDayOptionStatus    =   DB_Query('Select olt.* from optionlisttable as olt order by olt.optionVoteCount desc, olt.lastorderedon limit 0,2','ASSOC','');
         return array('orderstatus'=>$orderStatus[0],'presentoptiondata'=>$presentOptionStatus,'nextdayoptiondata'=>$nextDayOptionStatus);
     }
@@ -112,7 +142,7 @@
                 ),'ASSOC','');
             $getTopOptionFromPresentList    =   DB_Read(
                 array(
-                    'Table'=>'presentOption',
+                    'Table'=>'presentoption',
                     'Fields'=>'presentoptionvotecount,optionlisttableid',
                     'order'=>'presentoptionvotecount desc limit 0,1'
                 ),'ASSOC','');
@@ -131,7 +161,7 @@
                 $updatePresentOption    =   false;
                 $updatePresentOption    =   DB_Update(
                     array(
-                        'Table'=>'presentOption',
+                        'Table'=>'presentoption',
                         'Fields'=>array(
                             'optionlisttableid'=>$getTopTwoOptionForPresentList[0]['optionid'],
                             'presentoptionvotecount'=>'0'
@@ -140,7 +170,7 @@
                     ));
                 $updatePresentOption    =   DB_Update(
                     array(
-                        'Table'=>'presentOption',
+                        'Table'=>'presentoption',
                         'Fields'=>array(
                             'optionlisttableid'=>$getTopTwoOptionForPresentList[1]['optionid'],
                             'presentoptionvotecount'=>'0'
