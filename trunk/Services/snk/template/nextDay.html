@@ -6,8 +6,8 @@
                 <div class="text-success">
                     {{option.optionName}}
                 </div>
-                <span class="badge">{{option.optionVoteCount}}</span>
-                <button class="btn btn-default" data-ng-class="{ 'invisible' : option.nextvoteoption == option.optionid}" type="button" ng-click="confirmSelection($event)" data-optionval="{{option.optionid}}"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;I want this</button>
+                <span class="badge" data-ng-class="{ 'hide' : option.nextvoteoption == 0}">{{option.optionVoteCount}}</span>
+                <button class="btn btn-default" data-ng-class="{ 'invisible' : option.nextvoteoption != 0}" type="button" ng-click="confirmSelection($event)" data-optionval="{{option.optionid}}"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;I want this</button>
                 <p data-ng-class="{ 'show' : option.nextvoteoption == option.optionid, 'invisible' : option.nextvoteoption != option.optionid }" >You opted for this item for next day options</p>
             </li>
         </ul>

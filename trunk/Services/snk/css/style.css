@@ -1,3 +1,8 @@
+body{
+    background: url('http://www.animated-gifs.eu/website-thanks/0091.gif') no-repeat;
+    background-position: 50% 0%;
+    background-size: initial;    
+}
 .box-shadow{
     box-shadow: 1px 3px 6px #aaa;
     -webkit-box-shadow: 1px 3px 6px #aaa;

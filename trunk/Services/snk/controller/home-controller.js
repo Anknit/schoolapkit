@@ -19,7 +19,7 @@
                 $scope.presentOptionList   =   response.data.data;
                 var responseData    =   $scope.presentOptionList;
                 for(var key in responseData){
-                    $scope.presentOptionList[key]['percentCount']    =   (Math.floor(parseInt(responseData[key].presentoptionvotecount)*100/30)).toString() + '%';
+                    $scope.presentOptionList[key]['percentCount']    =   (Math.ceil(parseInt(responseData[key].presentoptionvotecount)*100/26)).toString() + '%';
                 }
                 UnloadOverlay();
             }, config = {}, errorCallback =   function (response) {
@@ -29,7 +29,7 @@
             $http.post('./php/requestHandler.php', data).then(successCallback, errorCallback);
         };
         $scope.getpercentstring =   function (dataArrOpt, index) {
-            dataArrOpt.percentCount    =    (Math.floor(parseInt(dataArrOpt.presentoptionvotecount)*100/30)).toString() + '%';
+            dataArrOpt.percentCount    =    (Math.ceil(parseInt(dataArrOpt.presentoptionvotecount)*100/26)).toString() + '%';
         };
     };
     homeController.$inject  =   ['$scope', '$routeParams', '$http'];
